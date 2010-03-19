@@ -10,6 +10,7 @@ require 'bertrpc/action'
 require 'bertrpc/errors'
 
 require 'erpc/request'
+require 'erpc/decodes'
 require 'erpc/action'
 require 'erpc/mod'
 

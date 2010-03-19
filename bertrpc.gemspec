@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{bertrpc}
-  s.version = "1.3.1"
+  s.version = "1.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tom Preston-Werner"]
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
      "lib/bertrpc/request.rb",
      "lib/bertrpc/service.rb",
      "lib/erpc/action.rb",
+     "lib/erpc/decodes.rb",
      "lib/erpc/mod.rb",
      "lib/erpc/request.rb",
      "test/action_test.rb",
