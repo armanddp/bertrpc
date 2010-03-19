@@ -9,6 +9,9 @@ require 'bertrpc/encodes'
 require 'bertrpc/action'
 require 'bertrpc/errors'
 
+require 'erpc/request'
+require 'erpc/action'
+
 module BERTRPC
   def self.version
     File.read(File.join(File.dirname(__FILE__), *%w[.. VERSION])).chomp

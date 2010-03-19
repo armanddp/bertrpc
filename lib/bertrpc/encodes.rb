@@ -1,6 +1,7 @@
 module BERTRPC
   module Encodes
     def encode_ruby_request(ruby_request)
+      debugger
       BERT.encode(ruby_request)
     end
 

@@ -17,6 +17,11 @@ module BERTRPC
       verify_options(options)
       Request.new(self, :cast, options)
     end
+    
+    def erpc(from, options = nil)
+      verify_options(options)
+      ERPC::Request.new(self, :rpc, from, options)
+    end
 
     # private
 

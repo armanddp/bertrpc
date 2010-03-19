@@ -10,7 +10,7 @@ module ERPC
     end
 
     def method_missing(cmd, *args)
-      Action.new(@svc, self, cmd)
+      Mod.new(@svc, self, cmd)
     end
   end
 end
