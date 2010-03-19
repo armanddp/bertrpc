@@ -11,6 +11,7 @@ require 'bertrpc/errors'
 
 require 'erpc/request'
 require 'erpc/action'
+require 'erpc/mod'
 
 module BERTRPC
   def self.version

@@ -1,6 +1,7 @@
 module ERPC
   class Action < BERTRPC::Action
-
+    include Decodes
+    
     def execute
       bert_request = encode_ruby_request(t[@req.kind, @req.from, @mod, @fun, @args])
       bert_response = transaction(bert_request)

@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
      "lib/bertrpc/request.rb",
      "lib/bertrpc/service.rb",
      "lib/erpc/action.rb",
+     "lib/erpc/mod.rb",
      "lib/erpc/request.rb",
      "test/action_test.rb",
      "test/encodes_test.rb",
