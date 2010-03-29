@@ -24,7 +24,6 @@ module BERTRPC
     end
 
     # private
-
     def verify_options(options)
       if options
         if cache = options[:cache]

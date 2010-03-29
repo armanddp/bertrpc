@@ -2,16 +2,26 @@ module ERPC
   module Decodes
 
     def decode_bert_response(bert_response)
-      puts bert_response
       ruby_response = BERT.decode(bert_response)
-      debugger
       case ruby_response[0]
         when :rpc_result
-          ruby_response[2]
+          do_handle_rpc_result(ruby_response[2])
         when :error
           error(ruby_response[1])
+        when :throw
+          raise Error.new(ruby_response[1])
         else
           raise
+      end
+    end
+    
+    private
+    def do_handle_rpc_result(response)
+      case response[0]
+        when :throw
+          raise Error.new(response[1][1][1])
+        else
+          raise NotSupportError.new
       end
     end
   end

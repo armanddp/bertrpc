@@ -13,6 +13,9 @@ require 'erpc/request'
 require 'erpc/decodes'
 require 'erpc/action'
 require 'erpc/mod'
+require 'erpc/error'
+require 'erpc/encode'
+#require 'erpc/decode'
 
 module BERTRPC
   def self.version
