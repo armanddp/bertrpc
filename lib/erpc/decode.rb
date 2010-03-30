@@ -18,27 +18,21 @@ module BERT
           fail("Unknown term tag: #{peek_1}")
       end
     end
-    
-     def read_erl_string
-       fail("Invalid Type, not an erlang string") unless read_1 == STRING
-       length = read_2
-       read_string(length).unpack('C' * length)
-     end
      
-      def read_tuple(arity)
-         if arity > 0
-           tag = read_any_raw || :undefined
-           if tag == :bert
-             read_complex_type(arity)
-           else
-             tuple = Tuple.new(arity)
-             tuple[0] = tag
-             (arity - 1).times { |i| tuple[i + 1] = read_any_raw }
-             tuple
-           end
+    def read_tuple(arity)
+       if arity > 0
+         tag = read_any_raw || :undefined
+         if tag == :bert
+           read_complex_type(arity)
          else
-           Tuple.new
+           tuple = Tuple.new(arity)
+           tuple[0] = tag
+           (arity - 1).times { |i| tuple[i + 1] = read_any_raw }
+           tuple
          end
+       else
+         Tuple.new
        end
+     end
   end
 end
