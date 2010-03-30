@@ -16,7 +16,7 @@ module BERT
     
     def write_string_list(data)
       fail(data) unless data.is_a? String
-      write_1 NIL and return if data.empty?
+      #write_1 NIL and return if data.empty?
       write_1 STRING
       write_2 data.length
       write_string data

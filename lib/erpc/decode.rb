@@ -24,5 +24,21 @@ module BERT
        length = read_2
        read_string(length).unpack('C' * length)
      end
+     
+      def read_tuple(arity)
+         if arity > 0
+           tag = read_any_raw || :undefined
+           if tag == :bert
+             read_complex_type(arity)
+           else
+             tuple = Tuple.new(arity)
+             tuple[0] = tag
+             (arity - 1).times { |i| tuple[i + 1] = read_any_raw }
+             tuple
+           end
+         else
+           Tuple.new
+         end
+       end
   end
 end
