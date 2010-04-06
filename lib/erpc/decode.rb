@@ -20,7 +20,6 @@ module BERT
     end
     
     def read_erl_string
-      debugger
       fail("Invalid Type, not an erlang string") unless read_1 == STRING
       length = read_2
       read_string(length)
@@ -40,6 +39,41 @@ module BERT
        else
          Tuple.new
        end
+     end
+     
+     # Ruby 1.9 Compatibility
+     def read_int
+       fail("Invalid Type, not an int") unless read_1 == INT
+       value = read_4
+       negative = (value >> 31)[0] == 1
+       value = (value - (1 << 32)) if negative
+       value.to_i
+     end
+
+     def read_small_bignum
+       fail("Invalid Type, not a small bignum") unless read_1 == SMALL_BIGNUM
+       size = read_1
+       sign = read_1
+       bytes = read_string(size).unpack("C" * size)
+       added = bytes.zip((0..bytes.length).to_a).inject(0) do |result, byte_index|
+         byte, index = *byte_index
+         value = (byte * (256 ** index))
+         sign != 0 ? (result - value) : (result + value)
+       end
+       added
+     end
+
+     def read_large_bignum
+       fail("Invalid Type, not a large bignum") unless read_1 == LARGE_BIGNUM
+       size = read_4
+       sign = read_1
+       bytes = read_string(size).unpack("C" * size)
+       added = bytes.zip((0..bytes.length).to_a).inject(0) do |result, byte_index|
+         byte, index = *byte_index
+         value = (byte * (256 ** index))
+         sign != 0 ? (result - value) : (result + value)
+       end
+       added
      end
   end
 end
