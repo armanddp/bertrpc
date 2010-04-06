@@ -18,6 +18,13 @@ module BERT
           fail("Unknown term tag: #{peek_1}")
       end
     end
+    
+    def read_erl_string
+      debugger
+      fail("Invalid Type, not an erlang string") unless read_1 == STRING
+      length = read_2
+      read_string(length)
+    end
      
     def read_tuple(arity)
        if arity > 0
