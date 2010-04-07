@@ -30,7 +30,6 @@ module BERT
       write_1 STRING
       write_2 data.length
       write_string data
-      write_1 NIL
     end
   end
 end
