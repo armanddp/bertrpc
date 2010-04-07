@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.expand_path('test_helper')
 
 class EncodesTest < Test::Unit::TestCase
   context "An Encodes includer" do
@@ -11,10 +11,7 @@ class EncodesTest < Test::Unit::TestCase
         bert = "\203h\004d\000\004calld\000\005mymodd\000\005myfunl\000\000\000\003a\001a\002a\003j"
         assert_equal bert, @enc.encode_ruby_request(t[:call, :mymod, :myfun, [1, 2, 3]])
       end
-      
-      should "return BERT_RPC encoded request" do 
-        bert = ""
-      end
+
     end
     
     context "bert response decoder" do
