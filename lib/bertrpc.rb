@@ -8,14 +8,7 @@ require 'bertrpc/mod'
 require 'bertrpc/encodes'
 require 'bertrpc/action'
 require 'bertrpc/errors'
-
-require 'erpc/request'
-require 'erpc/decodes'
-require 'erpc/action'
-require 'erpc/mod'
-require 'erpc/error'
-require 'erpc/encode'
-require 'erpc/decode'
+require 'erpc/erpc'
 
 module BERTRPC
   def self.version

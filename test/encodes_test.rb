@@ -11,8 +11,12 @@ class EncodesTest < Test::Unit::TestCase
         bert = "\203h\004d\000\004calld\000\005mymodd\000\005myfunl\000\000\000\003a\001a\002a\003j"
         assert_equal bert, @enc.encode_ruby_request(t[:call, :mymod, :myfun, [1, 2, 3]])
       end
+      
+      should "return BERT_RPC encoded request" do 
+        bert = ""
+      end
     end
-
+    
     context "bert response decoder" do
       should "return response when reply" do
         req = @enc.encode_ruby_request(t[:reply, [1, 2, 3]])

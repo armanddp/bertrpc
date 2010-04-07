@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tom Preston-Werner"]
-  s.date = %q{2010-04-06}
+  s.date = %q{2010-04-07}
   s.email = %q{tom@mojombo.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -32,9 +32,11 @@ Gem::Specification.new do |s|
      "lib/bertrpc/request.rb",
      "lib/bertrpc/service.rb",
      "lib/erpc/action.rb",
+     "lib/erpc/binary.rb",
      "lib/erpc/decode.rb",
      "lib/erpc/decodes.rb",
      "lib/erpc/encode.rb",
+     "lib/erpc/erpc.rb",
      "lib/erpc/error.rb",
      "lib/erpc/mod.rb",
      "lib/erpc/request.rb",
