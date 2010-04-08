@@ -31,5 +31,11 @@ module BERT
       write_2 data.length
       write_string data
     end
+    
+    def write_string(string)
+      string.each_byte do |b|
+        write_1 b
+      end
+    end
   end
 end

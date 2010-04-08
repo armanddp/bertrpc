@@ -39,7 +39,6 @@ module BERTRPC
     def transaction(bert_request)
       timeout = @svc.timeout && Float(@svc.timeout)
       sock = connect_to(@svc.host, @svc.port, timeout)
-
       if @req.options
         if @req.options[:cache] && @req.options[:cache][0] == :validation
           token = @req.options[:cache][1]

@@ -40,6 +40,8 @@ Gem::Specification.new do |s|
      "lib/erpc/error.rb",
      "lib/erpc/mod.rb",
      "lib/erpc/request.rb",
+     "samples/erpc_call.erl",
+     "samples/test.rb",
      "test/action_test.rb",
      "test/encodes_test.rb",
      "test/error_test.rb",
