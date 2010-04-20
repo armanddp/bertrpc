@@ -80,8 +80,13 @@ module BERTRPC
         secs = Integer(timeout)
         usecs = Integer((timeout - secs) * 1_000_000)
         optval = [secs, usecs].pack("l_2")
-        sock.setsockopt Socket::SOL_SOCKET, Socket::SO_RCVTIMEO, optval
-        sock.setsockopt Socket::SOL_SOCKET, Socket::SO_SNDTIMEO, optval
+        begin
+          sock.setsockopt Socket::SOL_SOCKET, Socket::SO_RCVTIMEO, optval
+          sock.setsockopt Socket::SOL_SOCKET, Socket::SO_SNDTIMEO, optval
+       rescue Exception => ex
+         # Solaris, for one, does not like/support socket timeouts.
+         @logger.info "[bertrpc] Unable to use raw socket timeouts: #{ex.class.name}: #{ex.message}" if @logger
+       end
       end
 
       sock.connect(Socket.pack_sockaddr_in(port, addr[0][3]))
