@@ -1,0 +1,17 @@
+def write(sock, bert)
+  $stdout.write("##############################################################################\n")
+  $stdout.write("######### Starting Socket Write                                  #############\n")
+  $stdout.write("######### Original Encoding #{bert.encoding.name}                #############\n")
+  $stdout.write("######### Original Bytesize #{bert.bytesize}                     #############\n")
+  bert.force_encoding "BINARY"
+  $stdout.write("######### Binary Encoding Forced                                 #############\n")
+  $stdout.write("######### New  Encoding #{bert.encoding.name}                    #############\n")
+  $stdout.write("######### New  Bytesize #{bert.bytesize}                         #############\n")
+  $stdout.write("          Packed Length #{[bert.length].pack("N")}               #############\n")
+  $stdout.write("          Packed Length #{[bert.length].pack("N").to_s}               #############\n")
+  $stdout.write("          Data:: #{bert}                                         #############\n")
+  sock.write([bert.bytesize].pack("N"))
+  count = sock.write(bert)
+  $stdout.write("######### Wrote #{count} to socket from expected #{bert.length}   ############\n")
+  $stdout.write("##############################################################################\n")
+end
