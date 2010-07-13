@@ -2,7 +2,6 @@ module ERPC
   module Decodes
 
     def decode_bert_response(bert_response)
-      debugger
       ruby_response = BERT.decode(bert_response)
       case ruby_response[0]
         when :rpc_result
@@ -23,7 +22,7 @@ module ERPC
         when :result
           response[1]
         when :throw
-          raise Error.new(format_error_message(response[1][1][1]))
+          raise Error.new(format_error_message(response[1][1][3]))
         when :error
           raise Error.new(response[1])
         else
